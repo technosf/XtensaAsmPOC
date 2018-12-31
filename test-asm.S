@@ -1,31 +1,22 @@
 /*
  * The ASM test code to test
+ * 
+ * Called via a CALLX from C++/.ino
+ * Input params are in a2-a7
+ * 
+ * Copies value in a2 to address in a3 via a10
+ * Return is in a2
  */
-
-  .data
-
-//  .global inputone    // Test creating a reference to an input param
-//inputone:   
-//  .int    
-//  .set addrinputone, inputone   // Create a symbol for the address of the global
-//
-//  .global inputtwo    // Test creating a reference to an input param
-//inputtwo:   
-//  .int    
-//  .set addrinputtwo, inputtwo   // Create a symbol for the address of the global
-
-  .text  
-  .align
-  .global asmtest
+  .text               # Code section
+  .align              # Align the byte boundaries - needed?
+  .global asmtest     # Make the symbol available to C++ for call
 asmtest:
-    mov  a14,  a10
-    mov  a15,  a11
-    movi  a10,   0xAA             // Move a test value in a10
+  entry a1,   8       # Create a window for execution
+  mov   a10,  a2      # Copy a2 value to a10 
+  s32i  a10,  a3, 0   # Copy the a10 value to the address in a3
+  movi  a2,   0xff    # Move the return value to a2
+  retw                # Return from the windowed call
+ 
 
-    
-//    movi  a11,   0xBB             // Move a test value in a11
-//    ill
-//    movi  a13,  addrinputtwo    // Load the address of input two into a13
-//    l8ui  a10,  a13,  0         // Load the value at the address in a13 into a10
 
     
