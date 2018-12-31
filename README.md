@@ -1,4 +1,4 @@
-# XtensaAsmPOC
+# Xtensa ASM Proof Of Concept
 Xtensa Asm from Arduino Core Proof Of Concept
 
 Proof of concept using Arduino core for ESP32 ASM where the ASM resides ina ".S" file and there is no C inline asm. 
