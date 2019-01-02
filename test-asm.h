@@ -6,4 +6,7 @@
 extern "C" 
 {
   uint8_t asmtest( uint8_t inputone, uint8_t * outputtwo );
+  
+  uint32_t memtest( uint8_t inputone, uint8_t * outputtwo );
+  
 }

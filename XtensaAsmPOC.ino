@@ -7,7 +7,9 @@
 
 uint8_t in1 = 0x11;   // Dummy values identiable in a core dump
 uint8_t in2 = 0x22;
-uint8_t out;
+uint32_t out;
+
+
 
 void setup()
 {
